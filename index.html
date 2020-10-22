@@ -288,32 +288,38 @@
                     break;
                 case "put":
                         if(tabela=="radio_novosti"){
+                            var value1 ={
+                                "id": $("input[name=id_novosti]").val()
+                            };
                             var values = {
-                            "naslov": $("input[name=naslov_novosti]").val(),
-                            "tekst":$("#tekst_novosti").val(),
-                            "kategorija_id": parseInt($("#kategorija_odabir").val())
+                            "naslov": $("input[name=naslov_novosti_put]").val(),
+                            "tekst":$("#tekst_novosti_put").val(),
+                            "kategorija_id": parseInt($("#kategorija_odabir_put").val())
                              };
                              console.log(values);
                             $.ajax({
-                            url:"http://localhost:8080/git/rest/api/novosti", 
+                            url:"http://localhost:8080/git/rest/api/novosti/"+value1.id, 
                             type: 'PUT',
                             data:JSON.stringify(values),
                             success: function(data) {
-                                    alert("Odgovor od servera> "+data['poruka']);
+                                    alert("apdejt uspesan za put novosti");
                         }
                              });
                         }else{
+                            var value1 ={
+                                "id": $("input[name=id_kategorije]").val()
+                            };
                             var values ={
-                                "kategorija": $("input[name=id_kategorije]").val(),
+                                
                                 "kategorija": $("input[name=kategorija_naziv_put]").val(),
                               };
-                              çç
+                              
                               $.ajax({
-                            url:"http://localhost:8080/git/rest/api/kategorije", 
+                            url:"http://localhost:8080/git/rest/api/kategorije/"+value1.id, 
                             type: 'PUT',
                             data:JSON.stringify(values),
                             success: function(data) {
-                                    alert("Odgovor od servera> "+data['poruka']);
+                                    alert("apdejt uspeo za put kategorju");
                         }
                              });
 
