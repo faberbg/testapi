@@ -15,7 +15,7 @@
     <h1>Forma za manipulaciju sa API-em</h1>
 
     <!-- Radio button grupa za odabir tipa tabele iz baze koji želimo da menjamo -->
-    <form action="">
+    <form action="" method="post">
         <div id="odabir_tabele">
             <input type="radio" name="odabir_tabele" id="radio_kategorija" value="kategorija">
             <label for="radio_kategorija">kategorija</label>
@@ -303,9 +303,9 @@
 
     $("input[name=http_zahtev]").on('click',prikaziBlok);
     $("input[name=odabir_tabele]").on('click',resetHTTP);
-    $("button").on('click', posaljiZahtev);
+   // $("button").on('click', posaljiZahtev);
 
-//
+
 
 </script>
 </html>
