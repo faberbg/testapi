@@ -305,7 +305,7 @@
     $("input[name=odabir_tabele]").on('click',resetHTTP);
     $("button").on('click', posaljiZahtev);
 
-
+//
 
 </script>
 </html>
