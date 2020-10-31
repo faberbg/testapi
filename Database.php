@@ -2,43 +2,44 @@
 
 class Database
 {
-    private $hostname = 'localhost';
-    private $username = 'root';
-    private $password = '';
+    private $hostname = "localhost";
+    private $username = "root";
+    private $password = "";
     private $dbname;
     private $dblink;
     private $result;
     private $records;
     private $affected;
 
+    function __construct($par_dbname)
+    {
+        $this->dbname = $par_dbname;
+        $this->Connect();
+    }
 
-function __construct($par_dbname)
-{
-    $this->dbname=$par_dbname;
-    $this->Connect();
-}
-function Connect(){
-    $this->dbink=new mysqli($this->hostname,$this->username,$this->password,$this->dbname);
-    if($this->dblink->connect_errno){
-        printf("Konekcija neuspesna:  %s /n",$this->dblink->connect_error);
-        exit();
+    function Connect(){
+        $this->dblink = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
+        if($this->dblink->connect_errno){
+            printf("Konekcija neuspešna: %s\n", $this->dblink->connect_error);
+            exit();
         }
-    $this->dblink->set_charset("utf8");
-
+        $this->dblink->set_charset("utf8");
     }
 
     function ExecuteQuery($query){
         $this->result = $this->dblink->query($query);
-        if($this->result){ //ako je popunjen tj. ako nije null
+        if($this->result){
             if(isset($this->result->num_rows)){
-                $this->records=$this->result->num_rows;
+                $this->records = $this->result->num_rows;
             }
             if(isset($this->result->affected_rows)){
-                $this->affected=$this->result->affected_rows;
+                $this->affected = $this->result->affected_rows;
+
             }
             return true;
-        }else {return false;}
-
+        }else{
+            return false;
+        }
     }
 
     function getResult(){
@@ -99,6 +100,8 @@ function Connect(){
             return false;
         }
     }
+
+
 }
 
 ?>
